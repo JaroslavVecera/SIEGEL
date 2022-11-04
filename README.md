@@ -1,0 +1,2 @@
+# SIEGEL
+SImple GamE Library
