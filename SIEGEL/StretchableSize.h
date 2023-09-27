@@ -9,6 +9,6 @@ namespace siegel {
 	public:
 		StretchableSize(double size);
 
-		virtual Vector2f GetBounds(Vector2f& parentBounds, Position& position);
+		virtual Vector2f GetBounds(Vector2f& parentBounds, Position& position, const forward_list<GO*>& children);
 	};
 }

@@ -91,10 +91,10 @@ Size* GraphicBuilder::ParseLongSize(json& data) {
 		return nullptr;
 	if (data[0] == "fixed")
 		return new FixedSize(data[1]);
-	if (data[0] == "stretchable")
+	if (data[0] == "stretch")
 		return new StretchableSize(data[1]);
-	if (data[0] == "shrinkable")
-		throw new exception("not implemented");
+	if (data[0] == "shrink")
+		return new ShrinkableSize(data[1]);
 }
 
 void GraphicBuilder::ParsePosition(json& data, GO* object) {

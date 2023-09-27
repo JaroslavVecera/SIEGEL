@@ -11,6 +11,7 @@ namespace siegel {
 
 		void Initialize();
 		virtual void Emplace(Vector2f& horizontalParentBounds, Vector2f& verticalParentBounds);
+		virtual forward_list<GO*> GetChildren();
 	public:
 		Layout();
 

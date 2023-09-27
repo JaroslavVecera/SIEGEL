@@ -55,3 +55,8 @@ void Layout::Render() {
 		child->Render();
 	_window->draw(_border);
 }
+
+
+forward_list<GO*> Layout::GetChildren() {
+	return _children;
+}

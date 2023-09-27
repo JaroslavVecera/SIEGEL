@@ -8,8 +8,10 @@
 #include "AreaMode.h"
 #include "Visibility.h"
 #include "Position.h"
+
 #include "Size.h"
 #include "FixedSize.h"
 #include "StretchableSize.h"
+#include "ShrinkableSize.h"
 
 #include "Shapes.h"

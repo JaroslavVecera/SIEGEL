@@ -23,8 +23,13 @@ siegel::ApplicationSettings demo::Application::MakeSettings() {
 void demo::Application::Update(const sf::Time elapsedTime) {
     if (!_availableUpdate)
         return;
-    _availableUpdate = false;
-    BuildGraphics();
+    try {
+        BuildGraphics();
+        _availableUpdate = false;
+    }
+    catch (...) {
+        Sleep(200);
+    }
 }
 
 void demo::Application::BuildGraphics() {
@@ -43,7 +48,8 @@ void demo::Application::Run() {
     filewatch::FileWatch<std::wstring> watch(
         L"graphic.json"s,
         [this](const std::wstring& path, const filewatch::Event change_type) {
-            _availableUpdate = true;
+            if (change_type == filewatch::Event::renamed_new)
+                _availableUpdate = true;
         }
     );
     a.SetUpdateCallback(std::bind(&Application::Update, this, std::placeholders::_1));

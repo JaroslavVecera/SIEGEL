@@ -38,12 +38,14 @@ void GO::SetVerticalSize(siegel::Size* size) {
 	if (_verticalSize)
 		delete _verticalSize;
 	_verticalSize = size;
+	_verticalSize->_type = SizeType::Vertical;
 }
 
 void GO::SetHorizontalSize(siegel::Size* size) {
 	if (_horizontalSize)
 		delete _horizontalSize;
 	_horizontalSize = size;
+	_horizontalSize->_type = SizeType::Horizontal;
 }
 
 siegel::Size& GO::GetVerticalSize() const {
@@ -60,8 +62,13 @@ void GO::Initialize() {
 }
 
 void GO::Emplace(Vector2f& horizontalParentBounds, Vector2f& verticalParentBounds) {
-	_canvasVerticalBounds = _verticalSize->GetBounds(verticalParentBounds, _verticalPosition);
-	_canvasHorizontalBounds = _horizontalSize->GetBounds(horizontalParentBounds, _horizontalPosition);
+	_canvasVerticalBounds = _verticalSize->GetBounds(verticalParentBounds, _verticalPosition, GetChildren());
+	_canvasHorizontalBounds = _horizontalSize->GetBounds(horizontalParentBounds, _horizontalPosition, GetChildren());
 	_canvasTopleft = Vector2f(_canvasHorizontalBounds.x, _canvasVerticalBounds.x);
 	_canvasSize = Vector2f(_canvasHorizontalBounds.y - _canvasHorizontalBounds.x, _canvasVerticalBounds.y - _canvasVerticalBounds.x);
+}
+
+
+forward_list<GO*> GO::GetChildren() {
+	return forward_list<GO*>();
 }

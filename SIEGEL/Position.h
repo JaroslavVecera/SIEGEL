@@ -7,6 +7,7 @@ using namespace sf;
 namespace siegel {
 	class FixedSize;
 	class StretchableSize;
+	class ShrinkableSize;
 	class Position {
 	protected:
 		double _shift;
@@ -24,5 +25,6 @@ namespace siegel {
 		double GetProportionalOrigin() const;
 		friend siegel::FixedSize;
 		friend siegel::StretchableSize;
+		friend siegel::ShrinkableSize;
 	};
 }

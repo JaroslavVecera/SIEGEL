@@ -12,6 +12,7 @@ namespace siegel {
 	class Position;
 	class Size;
 	class FixedSize;
+	class ShrinkableSize;
 	class Layout;
 
 	class GO {
@@ -33,8 +34,10 @@ namespace siegel {
 		void Initialize();
 
 		virtual void Emplace(Vector2f& horizontalParentBounds, Vector2f& verticalParentBounds);
+		virtual forward_list<GO*> GetChildren();
 		friend Layout;
 		friend Canvas;
+		friend ShrinkableSize;
 	public:
 		GO();
 		~GO();
