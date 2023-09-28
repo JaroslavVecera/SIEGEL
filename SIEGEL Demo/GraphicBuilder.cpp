@@ -95,6 +95,8 @@ Size* GraphicBuilder::ParseLongSize(json& data) {
 		return new StretchableSize(data[1]);
 	if (data[0] == "shrink")
 		return new ShrinkableSize(data[1]);
+	else
+		return nullptr;
 }
 
 void GraphicBuilder::ParsePosition(json& data, GO* object) {

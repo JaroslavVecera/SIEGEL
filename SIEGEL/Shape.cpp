@@ -1,5 +1,3 @@
-#pragma once
-
 #include "Shape.h"
 #include "Size.h"
 

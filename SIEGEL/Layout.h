@@ -1,9 +1,11 @@
 #pragma once
 
 #include "GO.h"
+#include "Canvas.h"
 #include <forward_list>
 
 namespace siegel {
+	class Canvas;
 	class Layout : public GO {
 	protected:
 		forward_list<GO*> _children;

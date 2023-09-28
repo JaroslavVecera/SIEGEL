@@ -1,7 +1,7 @@
 #include "GO.h"
 #include "Application.h"
 #include "Position.h"
-#include "FixedSize.cpp"
+#include "FixedSize.h"
 #include <memory>
 
 using namespace siegel;

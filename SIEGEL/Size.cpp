@@ -1,5 +1,3 @@
-#pragma once
-
 #include "Size.h"
 
 using namespace siegel;

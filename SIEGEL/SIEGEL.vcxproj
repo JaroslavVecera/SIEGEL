@@ -155,7 +155,6 @@
     <ClCompile Include="Layout.cpp" />
     <ClCompile Include="Position.cpp" />
     <ClCompile Include="ShrinkableSize.cpp" />
-    <ClCompile Include="ShrinkableSize.h" />
     <ClCompile Include="Shape.cpp" />
     <ClCompile Include="Size.cpp" />
     <ClCompile Include="StretchableSize.cpp" />
@@ -179,6 +178,7 @@
     <ClInclude Include="Siegel.h" />
     <ClInclude Include="Size.h" />
     <ClInclude Include="StretchableSize.h" />
+    <ClInclude Include="ShrinkableSize.h" />
     <ClInclude Include="TextureManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

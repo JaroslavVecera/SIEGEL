@@ -1,8 +1,7 @@
-#pragma once
-
 #include "Layout.h"
 #include "Size.h"
-#include "Go.cpp"
+#include "Go.h"
+#include "Canvas.h"
 
 using namespace siegel;
 

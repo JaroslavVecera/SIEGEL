@@ -1,5 +1,3 @@
-#pragma once
-
 #include "FixedSize.h"
 
 siegel::FixedSize::FixedSize(double size) {
