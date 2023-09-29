@@ -12,6 +12,7 @@ using namespace std;
 
 namespace siegel {
 	class Application {
+	private:
 		Canvas* _window;
 		static Application* _instance;
 		string _name;
@@ -19,9 +20,8 @@ namespace siegel {
 		Font _font;
 		std::function<void(const Time)> _updateCallback;
 		static ApplicationSettings* _settings;
-
+	private:
 		Application(ApplicationSettings settings);
-
 		void HandleEvents();
 		void Update(const Time elapsedTime);
 		void Render() const;

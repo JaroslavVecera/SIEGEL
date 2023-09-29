@@ -30,7 +30,6 @@ namespace siegel {
 		Vector2f _canvasVerticalBounds;
 	protected:
 		void SetWindow();
-	protected:
 		void Initialize();
 
 		virtual void Emplace(Vector2f& horizontalParentBounds, Vector2f& verticalParentBounds);
@@ -46,12 +45,10 @@ namespace siegel {
 		siegel::Position GetHorizontalPosition() const;
 		void SetVerticalPosition(siegel::Position& position);
 		siegel::Position GetVerticalPosition() const;
-
 		siegel::Size& GetHorizontalSize() const;
 		siegel::Size& GetVerticalSize() const;
 		void SetHorizontalSize(siegel::Size* size);
 		void SetVerticalSize(siegel::Size* size);
-
 		virtual void Render() const = 0;
 	};
 }

@@ -7,10 +7,12 @@ using namespace sf;
 
 namespace siegel {
 	class EllipseShape : public sf::Shape {
+	private:
 		sf::Vector2f m_radius;
 	public:
 		EllipseShape();
 		EllipseShape(const Vector2f&);
+
 		void setRadius(const sf::Vector2f& radius);
 		const sf::Vector2f& getRadius() const;
 		virtual std::size_t getPointCount() const;

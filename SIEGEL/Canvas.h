@@ -8,6 +8,7 @@ using namespace sf;
 
 namespace siegel {
 	class Canvas : public sf::RenderWindow {
+	private:
 		GO* _object = nullptr;
 		sf::Color _background;
 	public:

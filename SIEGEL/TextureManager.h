@@ -14,8 +14,9 @@ namespace siegel {
 	};
 
 	class TextureManager {
+	private:
 		unordered_map<TextureName, Texture*>* _pairs;
-
+	private:
 		Texture* LoadTexture(string);
 	public:
 		TextureManager();

@@ -13,7 +13,7 @@ namespace siegel {
 		double _shift;
 		double _proportionalParentOrigin;
 		double _proportionalOrigin;
-
+	protected:
 		double GetAbsoluteParentOrigin(Vector2f parentBounds) const;
 	public:
 		Position();
