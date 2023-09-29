@@ -9,6 +9,6 @@ namespace siegel {
 	public:
 		FixedSize(double size);
 
-		virtual Vector2f GetBounds(Vector2f& parentBounds, Position& position, const  forward_list<GO*>& children);
+		virtual Vector2f GetBounds(Vector2f const& parentBounds, Position const& position, const forward_list<GO*> const& children);
 	};
 }

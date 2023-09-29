@@ -7,17 +7,16 @@ Ellipse::Ellipse() {
 	Initialize(r, sf::Color::Blue);
 }
 
-Ellipse::Ellipse(sf::Vector2f &radius, sf::Color color) {
+Ellipse::Ellipse(const sf::Vector2f &radius, sf::Color color) {
 	Initialize(radius, color);
 }
 
-void Ellipse::Initialize(sf::Vector2f& radius, sf::Color color) {
+void Ellipse::Initialize(const sf::Vector2f& radius, sf::Color color) {
 	_shape.setRadius(radius);
-	//_shape.setPosition(_position.GetPosition());
 	_shape.setFillColor(color);
 }
 
-void Ellipse::Render() {
+void Ellipse::Render() const {
 	_window->draw(_shape);
 }
 
@@ -33,11 +32,11 @@ const sf::Vector2f& Ellipse::GetRadius() const {
 	return _shape.getRadius();
 }
 
-const FloatRect Ellipse::GetLocalBounds() {
+const FloatRect Ellipse::GetLocalBounds() const {
 	return _shape.getLocalBounds();
 }
 
-const FloatRect Ellipse::GetGlobalBounds() {
+const FloatRect Ellipse::GetGlobalBounds() const {
 	return _shape.getGlobalBounds();
 }
 

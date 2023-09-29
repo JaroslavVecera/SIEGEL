@@ -24,9 +24,9 @@ namespace siegel {
 
 		void HandleEvents();
 		void Update(const Time elapsedTime);
-		void Render();
+		void Render() const;
 		void UpdateView(const Event e);
-		void CreateWindows(int, int);
+		void CreateWindows(const int, const int);
 		void LoadTextures();
 		void SetName(const string name);
 	public:

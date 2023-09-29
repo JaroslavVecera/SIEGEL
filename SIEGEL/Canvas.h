@@ -14,9 +14,9 @@ namespace siegel {
 		Canvas(VideoMode mode, const String& title, Uint32 style = Style::Default, const ContextSettings& settings = ContextSettings(), sf::Color background = sf::Color::Black);
 
 		void SetObject(GO* obj);
-		GO* GetObject();
+		GO* GetObject() const;
 		void Clear();
-		void Render();
+		void Render() const;
 		void Emplace();
 
 		void DrawCut(const sf::Drawable& target, const sf::FloatRect cut) {

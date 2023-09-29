@@ -24,6 +24,6 @@ namespace siegel {
 		Color GetOutlineColor() const;
 
 		void AddChild(GO* child);
-		virtual void Render();
+		virtual void Render() const;
 	};
 }

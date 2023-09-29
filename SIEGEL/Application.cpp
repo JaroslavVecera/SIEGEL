@@ -58,7 +58,7 @@ void Application::HandleEvents() {
     }
 }
 
-void Application::Render() {
+void Application::Render() const {
     _window->Clear();
     _window->Render();
     _window->display();

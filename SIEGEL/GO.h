@@ -52,6 +52,6 @@ namespace siegel {
 		void SetHorizontalSize(siegel::Size* size);
 		void SetVerticalSize(siegel::Size* size);
 
-		virtual void Render() = 0;
+		virtual void Render() const = 0;
 	};
 }

@@ -49,7 +49,7 @@ void Layout::AddChild(GO* child) {
 	_children.push_front(child);
 }
 
-void Layout::Render() {
+void Layout::Render() const {
 	for (GO* child : _children)
 		child->Render();
 	_window->draw(_border);

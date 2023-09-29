@@ -4,7 +4,7 @@ siegel::FixedSize::FixedSize(double size) {
 	setSize(size);
 }
 
-Vector2f siegel::FixedSize::GetBounds(Vector2f& parentBounds, Position &position, const forward_list<GO*>& children) {
+Vector2f siegel::FixedSize::GetBounds(Vector2f const& parentBounds, Position  const&position, const forward_list<GO*> const& children) {
 	double absolutParentOrigin = position.GetAbsoluteParentOrigin(parentBounds);
 	double x1 = absolutParentOrigin + position.GetShift() - _size * position.GetProportionalOrigin();
 	double x2 = absolutParentOrigin + position.GetShift() + _size * (1 - position.GetProportionalOrigin());

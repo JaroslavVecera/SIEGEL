@@ -33,9 +33,6 @@
     <ClCompile Include="Ellipse.cpp">
       <Filter>Zdrojové soubory</Filter>
     </ClCompile>
-    <ClCompile Include="Canvas.cpp">
-      <Filter>Zdrojové soubory</Filter>
-    </ClCompile>
     <ClCompile Include="GO.cpp">
       <Filter>Zdrojové soubory</Filter>
     </ClCompile>
@@ -60,10 +57,10 @@
     <ClCompile Include="StretchableSize.cpp">
       <Filter>Zdrojové soubory</Filter>
     </ClCompile>
-    <ClCompile Include="ShrinkableSize.h">
-      <Filter>Hlavičkové soubory</Filter>
-    </ClCompile>
     <ClCompile Include="ShrinkableSize.cpp">
+      <Filter>Zdrojové soubory</Filter>
+    </ClCompile>
+    <ClCompile Include="Canvas.cpp">
       <Filter>Zdrojové soubory</Filter>
     </ClCompile>
   </ItemGroup>
@@ -117,6 +114,9 @@
       <Filter>Hlavičkové soubory</Filter>
     </ClInclude>
     <ClInclude Include="StretchableSize.h">
+      <Filter>Hlavičkové soubory</Filter>
+    </ClInclude>
+    <ClInclude Include="ShrinkableSize.h">
       <Filter>Hlavičkové soubory</Filter>
     </ClInclude>
   </ItemGroup>

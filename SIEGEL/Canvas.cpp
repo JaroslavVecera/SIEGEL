@@ -7,7 +7,7 @@ Canvas::Canvas(VideoMode mode, const String& title, Uint32 style, const ContextS
 	_background = background;
 }
 
-GO* Canvas::GetObject() {
+GO* Canvas::GetObject() const {
 	return _object;
 }
 
@@ -19,7 +19,7 @@ void Canvas::Clear() {
 	RenderWindow::clear(_background);
 }
 
-void Canvas::Render() {
+void Canvas::Render() const {
 	_object->Render();
 }
 
