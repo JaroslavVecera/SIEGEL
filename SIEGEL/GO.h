@@ -49,6 +49,10 @@ namespace siegel {
 		siegel::Size& GetVerticalSize() const;
 		void SetHorizontalSize(siegel::Size* size);
 		void SetVerticalSize(siegel::Size* size);
+		void SetHorizontalMargin(Vector2f margin);
+		void SetVerticalMargin(Vector2f margin);
+		Vector2f GetHorizontalMargin();
+		Vector2f GetVerticalMargin();
 		virtual void Render() const = 0;
 	};
 }

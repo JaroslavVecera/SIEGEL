@@ -69,6 +69,22 @@ void GO::Emplace(Vector2f& horizontalParentBounds, Vector2f& verticalParentBound
 }
 
 
+void GO::SetHorizontalMargin(Vector2f margin) {
+	_horizontalMargin = margin;
+}
+
+void GO::SetVerticalMargin(Vector2f margin) {
+	_verticalMargin = margin;
+}
+
+Vector2f GO::GetHorizontalMargin() {
+	return _horizontalMargin;
+}
+
+Vector2f GO::GetVerticalMargin() {
+	return _verticalMargin;
+}
+
 forward_list<GO*> GO::GetChildren() {
 	return forward_list<GO*>();
 }
