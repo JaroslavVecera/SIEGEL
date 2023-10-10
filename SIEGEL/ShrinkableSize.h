@@ -8,8 +8,8 @@ namespace siegel {
 	public:
 		ShrinkableSize(double size);
 
-		virtual Vector2f GetBounds(Vector2f const& parentBounds, Position const& position, const forward_list<GO*> const& children);
-		virtual double GetMinParentSize(double maxParentSize, Position const& position, std::forward_list<GO*> const& children);
-		virtual double GetMinSize(double maxParentSize, Position const& position, std::forward_list<GO*> const& children);
+		virtual Vector2f GetBounds(Vector2f &parentBounds, GO &object);
+		virtual double GetMinParentSize(double maxParentSize, GO &object);
+		virtual double GetMinSize(double maxParentSize, GO &object);
 	};
 }

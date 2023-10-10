@@ -6,29 +6,28 @@ siegel::ShrinkableSize::ShrinkableSize(double size) {
 	setSize(size);
 }
 
-Vector2f siegel::ShrinkableSize::GetBounds(Vector2f const& parentBounds, Position const& position, const forward_list<GO*> const& children) {
-	double minSize = GetMinSize(parentBounds.y - parentBounds.x, position, (forward_list<GO*>&)children);
+Vector2f siegel::ShrinkableSize::GetBounds(Vector2f& parentBounds, GO &object) {
+	Position position = GetPosition(object);
+
+	double minSize = GetMinSize(parentBounds.y - parentBounds.x, object);
 	double absolutParentOrigin = position.GetAbsoluteParentOrigin(parentBounds);
 	double x1 = absolutParentOrigin + position.GetShift() - minSize * position.GetProportionalOrigin();
 	double x2 = absolutParentOrigin + position.GetShift() + minSize * (1 - position.GetProportionalOrigin());
 	return Vector2f(x1, x2);
 }
 
-double siegel::ShrinkableSize::GetMinSize(double maxParentSize, Position const& position, std::forward_list<GO*> const& children) {
+double siegel::ShrinkableSize::GetMinSize(double maxParentSize, GO &object) {
 	double minSize = 0;
-	for (GO* child : children) {
-		if (_type == SizeType::Horizontal)
-			minSize = fmax(minSize, child->_horizontalSize->GetMinParentSize(_size, child->_horizontalPosition, child->GetChildren()));
-		else
-			minSize = fmax(minSize, child->_verticalSize->GetMinParentSize(_size, child->_verticalPosition, child->GetChildren()));
+	for (GO* child : object.GetChildren()) {
+		Size* childSize = (_type == SizeType::Horizontal) ? child->_horizontalSize : child->_verticalSize;
+		minSize = fmax(minSize, childSize->GetMinParentSize(_size, *child));
 	}
 	minSize = fmin(minSize, _size);
 	return minSize;
 }
 
 
-double siegel::ShrinkableSize::GetMinParentSize(double maxParentSize, Position const& position, std::forward_list<GO*> const& children) {
-	double minSize = GetMinSize(maxParentSize, position, children);
-
-	return SizeToParentSize(minSize, maxParentSize, position, children);
+double siegel::ShrinkableSize::GetMinParentSize(double maxParentSize, GO &object) {
+	double minSize = GetMinSize(maxParentSize, object);
+	return SizeToParentSize(minSize, maxParentSize, object);
 }

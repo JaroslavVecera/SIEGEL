@@ -6,7 +6,9 @@ siegel::StretchableSize::StretchableSize(double size) {
 	setSize(size);
 }
 
-Vector2f siegel::StretchableSize::GetBounds(Vector2f const& parentBounds, Position const& position, const forward_list<GO*> const& children) {
+Vector2f siegel::StretchableSize::GetBounds(Vector2f &parentBounds, GO &object) {
+	Position position = GetPosition(object);
+
 	double absolutParentOrigin = position.GetAbsoluteParentOrigin(parentBounds);
 	double factor1 = (absolutParentOrigin - parentBounds.x + position.GetShift()) / (_size * position.GetProportionalOrigin());
 	double factor2 = (parentBounds.y - absolutParentOrigin - position.GetShift()) / (_size * (1 - position.GetProportionalOrigin()));

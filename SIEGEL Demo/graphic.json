@@ -21,7 +21,7 @@
 					"outlineColor": [ 0, 0, 6000 ],
 					"size": [
 						[ "fixed", 100 ],
-						[ "shrink", 100 ]
+						[ "shrink", 1000 ]
 					],
 					"position": [
 						[ 0, 0.5, 0.5 ],

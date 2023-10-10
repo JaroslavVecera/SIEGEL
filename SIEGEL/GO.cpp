@@ -18,7 +18,7 @@ void GO::SetWindow() {
 	_window = &Application::GetInstance().GetWindow();
 }
 
-siegel::Position GO::GetHorizontalPosition() const {
+siegel::Position& GO::GetHorizontalPosition() {
 	return _horizontalPosition;
 }
 
@@ -26,7 +26,7 @@ void GO::SetHorizontalPosition(siegel::Position &position) {
 	_horizontalPosition = position;
 }
 
-siegel::Position GO::GetVerticalPosition() const {
+siegel::Position& GO::GetVerticalPosition() {
 	return _verticalPosition;
 }
 
@@ -62,8 +62,8 @@ void GO::Initialize() {
 }
 
 void GO::Emplace(Vector2f& horizontalParentBounds, Vector2f& verticalParentBounds) {
-	_canvasVerticalBounds = _verticalSize->GetBounds(verticalParentBounds, _verticalPosition, GetChildren());
-	_canvasHorizontalBounds = _horizontalSize->GetBounds(horizontalParentBounds, _horizontalPosition, GetChildren());
+	_canvasVerticalBounds = _verticalSize->GetBounds(verticalParentBounds, *this);
+	_canvasHorizontalBounds = _horizontalSize->GetBounds(horizontalParentBounds, *this);
 	_canvasTopleft = Vector2f(_canvasHorizontalBounds.x, _canvasVerticalBounds.x);
 	_canvasSize = Vector2f(_canvasHorizontalBounds.y - _canvasHorizontalBounds.x, _canvasVerticalBounds.y - _canvasVerticalBounds.x);
 }

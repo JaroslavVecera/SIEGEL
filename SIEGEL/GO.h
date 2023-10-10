@@ -37,14 +37,15 @@ namespace siegel {
 		friend Layout;
 		friend Canvas;
 		friend ShrinkableSize;
+		friend Size;
 	public:
 		GO();
 		~GO();
 
 		void SetHorizontalPosition(siegel::Position &position);
-		siegel::Position GetHorizontalPosition() const;
+		siegel::Position& GetHorizontalPosition();
 		void SetVerticalPosition(siegel::Position& position);
-		siegel::Position GetVerticalPosition() const;
+		siegel::Position& GetVerticalPosition();
 		siegel::Size& GetHorizontalSize() const;
 		siegel::Size& GetVerticalSize() const;
 		void SetHorizontalSize(siegel::Size* size);
