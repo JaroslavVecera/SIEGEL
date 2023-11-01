@@ -46,6 +46,8 @@ const Color Ellipse::GetColor() const {
 
 void Ellipse::Emplace(Vector2f& horizontalParentBounds, Vector2f& verticalParentBounds) {
 	GO::Emplace(horizontalParentBounds, verticalParentBounds);
-	_shape.setPosition(_canvasTopleft);
-	_shape.setRadius(Vector2f(_canvasSize.x / 2, _canvasSize.y / 2));
+	_shape.setPosition(Vector2f(_canvasTopleft.x + _horizontalMargin.x, _canvasTopleft.y + _verticalMargin.x));
+	_shape.setRadius(Vector2f(
+		(_canvasSize.x - _horizontalMargin.x - _horizontalMargin.y) / 2,
+		(_canvasSize.y - _verticalMargin.x - _verticalMargin.y) / 2));
 }

@@ -20,11 +20,16 @@ void Size::setSize(double size) {
 }
 
 double Size::GetMinParentSize(double maxParentSize, GO &object) {
-	return SizeToParentSize(_size, maxParentSize, object);
+	Vector2f& margin = GetMargin(object);
+	double wholeSize = _size + margin.x + margin.y;
+	return SizeToParentSize(wholeSize, maxParentSize, object);
 }
 
 double Size::SizeToParentSize(double size, double maxParentSize, GO &object) {
 	Position& position = GetPosition(object);
+
+	if (position.GetProportionalParentOrigin() == 0 || position.GetProportionalParentOrigin() == 1)
+		return size;
 
 	double minBound1 = (size * position.GetProportionalOrigin() - position.GetShift()) / position.GetProportionalParentOrigin();
 	double minBound2 = (size * (1 - position.GetProportionalOrigin()) + position.GetShift()) / (1 - position.GetProportionalParentOrigin());
@@ -33,4 +38,8 @@ double Size::SizeToParentSize(double size, double maxParentSize, GO &object) {
 
 Position& Size::GetPosition(GO& object) {
 	return (_type == SizeType::Horizontal) ? object.GetHorizontalPosition() : object.GetVerticalPosition();
+}
+
+Vector2f& Size::GetMargin(GO& object) {
+	return (_type == SizeType::Horizontal) ? object.GetHorizontalMargin() : object.GetVerticalMargin();
 }

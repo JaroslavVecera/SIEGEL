@@ -12,7 +12,7 @@ Layout::Layout() : GO() {
 void Layout::Initialize() {
 	_border.setOutlineColor(Color::Green);
 	_border.setFillColor(Color::Transparent);
-	_border.setOutlineThickness(2);
+	SetBorderThickness(2);
 }
 
 void Layout::SetVerticalSize(siegel::Size* size) {
@@ -39,12 +39,16 @@ void Layout::Emplace(Vector2f& horizontalParentBounds, Vector2f& verticalParentB
 	GO::Emplace(horizontalParentBounds, verticalParentBounds);
 	EmplaceBorder();
 	for (GO* child : _children)
-		child->Emplace(_canvasHorizontalBounds, _canvasVerticalBounds);
+	{
+		Vector2f horizontalBounds = Vector2f(_canvasHorizontalBounds.x + _horizontalMargin.x, _canvasHorizontalBounds.y - _horizontalMargin.y);
+		Vector2f verticalBounds = Vector2f(_canvasVerticalBounds.x + _verticalMargin.x, _canvasVerticalBounds.y - _verticalMargin.y);
+		child->Emplace(horizontalBounds, verticalBounds);
+	}
 }
 
 void Layout::EmplaceBorder() {
-	_border.setPosition(_canvasTopleft);
-	_border.setSize(_canvasSize);
+	_border.setPosition(Vector2f(_canvasTopleft.x + _horizontalMargin.x, _canvasTopleft.y + _verticalMargin.x));
+	_border.setSize(Vector2f(_canvasSize.x - _horizontalMargin.x - _horizontalMargin.y, _canvasSize.y - _verticalMargin.x - _verticalMargin.y));
 }
 
 void Layout::AddChild(GO* child) {

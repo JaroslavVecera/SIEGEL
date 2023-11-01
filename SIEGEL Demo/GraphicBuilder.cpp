@@ -20,6 +20,7 @@ GO* GraphicBuilder::BuildGoObject(json &data, string type) {
 	GO* object = (*this.*function)(data);
 	ParseSize(data, object);
 	ParsePosition(data, object);
+	ParseMargin(data, object);
 	return object;
 }
 
@@ -83,6 +84,25 @@ void GraphicBuilder::ParseSize(json& data, GO *object) {
 			object->SetHorizontalSize(horizontalSize);
 		if (verticalSize != nullptr)
 			object->SetVerticalSize(verticalSize);
+	}
+}
+
+void GraphicBuilder::ParseMargin(json& data, GO* object) {
+	if (!data.contains("margin") || !data["margin"].is_array() || data["margin"].size() != 2)
+		return;
+	json xJson = data["margin"][0];
+	json yJson = data["margin"][1];
+	if (xJson.type() != yJson.type())
+		return;
+	if (xJson.is_number()) {
+		object->SetHorizontalMargin(Vector2f(xJson, xJson));
+		object->SetVerticalMargin(Vector2f(yJson, yJson));
+	}
+	else if (xJson.is_array()) {
+		if (xJson.size() != 2 || yJson.size() != 2)
+			return;
+		object->SetHorizontalMargin(Vector2f(xJson[0], xJson[1]));
+		object->SetVerticalMargin(Vector2f(yJson[0], yJson[1]));
 	}
 }
 

@@ -8,12 +8,16 @@ siegel::StretchableSize::StretchableSize(double size) {
 
 Vector2f siegel::StretchableSize::GetBounds(Vector2f &parentBounds, GO &object) {
 	Position position = GetPosition(object);
-
+	Vector2f& margin = GetMargin(object);
+	double wholeSize = _size + margin.x + margin.y;
 	double absolutParentOrigin = position.GetAbsoluteParentOrigin(parentBounds);
-	double factor1 = (absolutParentOrigin - parentBounds.x + position.GetShift()) / (_size * position.GetProportionalOrigin());
-	double factor2 = (parentBounds.y - absolutParentOrigin - position.GetShift()) / (_size * (1 - position.GetProportionalOrigin()));
+	double leftSize = wholeSize * position.GetProportionalOrigin();
+	double rightSize = wholeSize * (1 - position.GetProportionalOrigin());
+
+	double factor1 = leftSize == 0 ? 1 :(absolutParentOrigin + position.GetShift() - parentBounds.x) / leftSize;
+	double factor2 = rightSize == 0 ? 1 : (parentBounds.y - (absolutParentOrigin + position.GetShift())) / rightSize;
 	double factor = fmax(1, fmin(factor1, factor2));
-	double x1 = absolutParentOrigin + position.GetShift() - _size * factor * position.GetProportionalOrigin();
-	double x2 = absolutParentOrigin + position.GetShift() + _size * factor * (1 - position.GetProportionalOrigin());
+	double x1 = absolutParentOrigin + position.GetShift() - factor * leftSize;
+	double x2 = absolutParentOrigin + position.GetShift() + factor * rightSize;
 	return Vector2f(x1, x2);
 }

@@ -17,13 +17,14 @@ Vector2f siegel::ShrinkableSize::GetBounds(Vector2f& parentBounds, GO &object) {
 }
 
 double siegel::ShrinkableSize::GetMinSize(double maxParentSize, GO &object) {
-	double minSize = 0;
+	Vector2f& margin = GetMargin(object);
+	double minContentSize = 0;
 	for (GO* child : object.GetChildren()) {
 		Size* childSize = (_type == SizeType::Horizontal) ? child->_horizontalSize : child->_verticalSize;
-		minSize = fmax(minSize, childSize->GetMinParentSize(_size, *child));
+		minContentSize = fmax(minContentSize, childSize->GetMinParentSize(_size, *child));
 	}
-	minSize = fmin(minSize, _size);
-	return minSize;
+	minContentSize = fmin(minContentSize, _size);
+	return minContentSize + margin.x + margin.y;
 }
 
 

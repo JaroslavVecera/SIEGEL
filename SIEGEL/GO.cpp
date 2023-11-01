@@ -77,11 +77,11 @@ void GO::SetVerticalMargin(Vector2f margin) {
 	_verticalMargin = margin;
 }
 
-Vector2f GO::GetHorizontalMargin() {
+Vector2f &GO::GetHorizontalMargin() {
 	return _horizontalMargin;
 }
 
-Vector2f GO::GetVerticalMargin() {
+Vector2f &GO::GetVerticalMargin() {
 	return _verticalMargin;
 }
 

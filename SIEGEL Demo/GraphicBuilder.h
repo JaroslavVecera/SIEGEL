@@ -15,6 +15,7 @@ namespace demo {
 		GO* BuildLayout(json &data);
 		void ParseColor(json& data, Color** c);
 		void ParseSize(json& data, GO* object);
+		void ParseMargin(json& data, GO* object);
 		Size* ParseLongSize(json& data);
 		void ParsePosition(json& data, GO* object);
 		forward_list<GO*> ParseChildren(json& data);

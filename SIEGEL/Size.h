@@ -19,7 +19,8 @@ namespace siegel {
 		double _size;
 		SizeType _type;
 	protected:
-		Position &GetPosition(GO& object);
+		Position& GetPosition(GO& object);
+		Vector2f &GetMargin(GO& object);
 
 		friend GO;
 	public:
