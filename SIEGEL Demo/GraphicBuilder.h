@@ -18,6 +18,7 @@ namespace demo {
 		void ParseMargin(json& data, GO* object);
 		Size* ParseLongSize(json& data);
 		void ParsePosition(json& data, GO* object);
+		double ParseBorderThickness(json& data);
 		forward_list<GO*> ParseChildren(json& data);
 	public:
 		GO* BuildGoObject(json &data);

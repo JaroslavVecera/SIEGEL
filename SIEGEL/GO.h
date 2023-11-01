@@ -55,5 +55,6 @@ namespace siegel {
 		Vector2f &GetHorizontalMargin();
 		Vector2f &GetVerticalMargin();
 		virtual void Render() const = 0;
+		double virtual GetBorderThickness();
 	};
 }

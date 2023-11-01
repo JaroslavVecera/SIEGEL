@@ -40,15 +40,15 @@ void Layout::Emplace(Vector2f& horizontalParentBounds, Vector2f& verticalParentB
 	EmplaceBorder();
 	for (GO* child : _children)
 	{
-		Vector2f horizontalBounds = Vector2f(_canvasHorizontalBounds.x + _horizontalMargin.x, _canvasHorizontalBounds.y - _horizontalMargin.y);
-		Vector2f verticalBounds = Vector2f(_canvasVerticalBounds.x + _verticalMargin.x, _canvasVerticalBounds.y - _verticalMargin.y);
+		Vector2f horizontalBounds = Vector2f(_canvasHorizontalBounds.x + _horizontalMargin.x + GetBorderThickness(), _canvasHorizontalBounds.y - _horizontalMargin.y - GetBorderThickness());
+		Vector2f verticalBounds = Vector2f(_canvasVerticalBounds.x + _verticalMargin.x + GetBorderThickness(), _canvasVerticalBounds.y - _verticalMargin.y - GetBorderThickness());
 		child->Emplace(horizontalBounds, verticalBounds);
 	}
 }
 
 void Layout::EmplaceBorder() {
-	_border.setPosition(Vector2f(_canvasTopleft.x + _horizontalMargin.x, _canvasTopleft.y + _verticalMargin.x));
-	_border.setSize(Vector2f(_canvasSize.x - _horizontalMargin.x - _horizontalMargin.y, _canvasSize.y - _verticalMargin.x - _verticalMargin.y));
+	_border.setPosition(Vector2f(_canvasTopleft.x + _horizontalMargin.x + GetBorderThickness(), _canvasTopleft.y + _verticalMargin.x + GetBorderThickness()));
+	_border.setSize(Vector2f(_canvasSize.x - _horizontalMargin.x - _horizontalMargin.y - 2 * GetBorderThickness(), _canvasSize.y - _verticalMargin.x - _verticalMargin.y - 2 * GetBorderThickness()));
 }
 
 void Layout::AddChild(GO* child) {

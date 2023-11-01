@@ -1,33 +1,41 @@
 {
 	"type": "Layout",
-	"outlineColor": [6000, 0, 0],
-	"size": [["fixed", 150], ["shrink", 200]],
-	"position": [[0, 0.5, 0.5], [0, 0.5, 0.5]],
+	"borderThickness": 15,
+	"outlineColor": [ 6000, 0, 0 ],
+	"size": [
+		[ "fixed", 150 ],
+		[ "fixed", 100 ]
+	],
+	"position": [
+		[ 0, 0.5, 0.5 ],
+		[ 0, 0.5, 0.5 ]
+	],
 	"children": [
 		{
 			"type": "Layout",
+			"borderThickness": 15,
 			"outlineColor": [ 0, 6000, 0 ],
 			"size": [
-				[ "shrink", 150 ],
-				[ "shrink", 100 ]
+				[ "stretch", 5 ],
+				[ "stretch", 5 ]
 			],
 			"position": [
-				[ 0, 1, 1 ],
-				[ 0, 1, 1 ]
+				[ 0, 0.5, 1 ],
+				[ 0, 0.5, 1 ]
 			],
-			"margin": [ 0, 3 ],
+			"margin": [ 0, 0 ],
 			"children": [
 				{
 					"type": "Ellipse",
 					"size": [
-						[ "stretch", 62 ],
-						[ "stretch", 50 ]
+						[ "fixed", 1 ],
+						[ "fixed", 1 ]
 					],
 					"position": [
 						[ 0, 0.5, 0.5 ],
 						[ 0, 0.5, 0.5 ]
 					],
-					"margin": [ 0, 20 ]
+					"margin": [ 0, 0 ]
 				}
 			]
 		}

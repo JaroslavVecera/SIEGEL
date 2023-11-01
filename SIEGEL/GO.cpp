@@ -88,3 +88,7 @@ Vector2f &GO::GetVerticalMargin() {
 forward_list<GO*> GO::GetChildren() {
 	return forward_list<GO*>();
 }
+
+double GO::GetBorderThickness() {
+	return 0;
+}

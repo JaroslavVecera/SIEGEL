@@ -30,6 +30,6 @@ namespace siegel {
 		Vector2f GetHorizontalPadding();
 		Vector2f GetVerticalPadding();
 		void SetBorderThickness(double thickness);
-		double GetBorderThickness();
+		virtual double GetBorderThickness();
 	};
 }

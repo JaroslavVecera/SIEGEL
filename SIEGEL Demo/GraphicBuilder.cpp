@@ -57,6 +57,12 @@ GO* GraphicBuilder::BuildLayout(json &data) {
 		delete c;
 	}
 
+	if (data.contains("borderThickness")) {
+		Color* c = nullptr;
+		double t = ParseBorderThickness(data["borderThickness"]);
+		l->SetBorderThickness(t);
+	}
+
 	if (data.contains("children") && data["children"].is_array()) {
 		forward_list<GO*> children = ParseChildren(data["children"]);
 		for (GO* child : children)
@@ -139,6 +145,11 @@ void GraphicBuilder::ParsePosition(json& data, GO* object) {
 	Position vp(yShift, yParentOrigin, yOrigin);
 	object->SetHorizontalPosition(hp);
 	object->SetVerticalPosition(vp);
+}
+
+double GraphicBuilder::ParseBorderThickness(json& data) {
+	if (data.is_number())
+		return data;
 }
 
 

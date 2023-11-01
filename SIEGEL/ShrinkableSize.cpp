@@ -24,7 +24,7 @@ double siegel::ShrinkableSize::GetMinSize(double maxParentSize, GO &object) {
 		minContentSize = fmax(minContentSize, childSize->GetMinParentSize(_size, *child));
 	}
 	minContentSize = fmin(minContentSize, _size);
-	return minContentSize + margin.x + margin.y;
+	return minContentSize + margin.x + margin.y + 2 * object.GetBorderThickness();
 }
 
 

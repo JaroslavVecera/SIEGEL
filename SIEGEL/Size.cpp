@@ -21,7 +21,7 @@ void Size::setSize(double size) {
 
 double Size::GetMinParentSize(double maxParentSize, GO &object) {
 	Vector2f& margin = GetMargin(object);
-	double wholeSize = _size + margin.x + margin.y;
+	double wholeSize = _size + margin.x + margin.y + 2 * object.GetBorderThickness();
 	return SizeToParentSize(wholeSize, maxParentSize, object);
 }
 
