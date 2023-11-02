@@ -21,6 +21,7 @@ namespace siegel {
 	protected:
 		Position& GetPosition(GO& object);
 		Vector2f &GetMargin(GO& object);
+		Vector2f &GetPadding(GO& object);
 
 		friend GO;
 	public:

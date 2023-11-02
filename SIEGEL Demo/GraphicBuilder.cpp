@@ -48,6 +48,7 @@ void GraphicBuilder::ParseColor(json& data, Color** c) {
 
 GO* GraphicBuilder::BuildLayout(json &data) {
 	Layout* l = new Layout();
+	ParsePadding(data, l);
 
 	if (data.contains("outlineColor")) {
 		Color* c = nullptr;
@@ -109,6 +110,25 @@ void GraphicBuilder::ParseMargin(json& data, GO* object) {
 			return;
 		object->SetHorizontalMargin(Vector2f(xJson[0], xJson[1]));
 		object->SetVerticalMargin(Vector2f(yJson[0], yJson[1]));
+	}
+}
+
+void GraphicBuilder::ParsePadding(json& data, Layout* object) {
+	if (!data.contains("padding") || !data["padding"].is_array() || data["padding"].size() != 2)
+		return;
+	json xJson = data["padding"][0];
+	json yJson = data["padding"][1];
+	if (xJson.type() != yJson.type())
+		return;
+	if (xJson.is_number()) {
+		object->SetHorizontalPadding(Vector2f(xJson, xJson));
+		object->SetVerticalPadding(Vector2f(yJson, yJson));
+	}
+	else if (xJson.is_array()) {
+		if (xJson.size() != 2 || yJson.size() != 2)
+			return;
+		object->SetHorizontalPadding(Vector2f(xJson[0], xJson[1]));
+		object->SetVerticalPadding(Vector2f(yJson[0], yJson[1]));
 	}
 }
 

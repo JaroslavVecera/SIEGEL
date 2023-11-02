@@ -21,7 +21,8 @@ void Size::setSize(double size) {
 
 double Size::GetMinParentSize(double maxParentSize, GO &object) {
 	Vector2f& margin = GetMargin(object);
-	double wholeSize = _size + margin.x + margin.y + 2 * object.GetBorderThickness();
+	Vector2f& padding = GetPadding(object);
+	double wholeSize = _size + margin.x + margin.y + 2 * object.GetBorderThickness() + padding.x + padding.y;
 	return SizeToParentSize(wholeSize, maxParentSize, object);
 }
 
@@ -42,4 +43,8 @@ Position& Size::GetPosition(GO& object) {
 
 Vector2f& Size::GetMargin(GO& object) {
 	return (_type == SizeType::Horizontal) ? object.GetHorizontalMargin() : object.GetVerticalMargin();
+}
+
+Vector2f& Size::GetPadding(GO& object) {
+	return (_type == SizeType::Horizontal) ? object.GetHorizontalPadding() : object.GetVerticalPadding();
 }

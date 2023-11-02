@@ -28,6 +28,8 @@ namespace siegel {
 		Vector2f _canvasSize;
 		Vector2f _canvasHorizontalBounds;
 		Vector2f _canvasVerticalBounds;
+		Vector2f _horizontalPadding;
+		Vector2f _verticalPadding;
 	protected:
 		void SetWindow();
 		void Initialize();
@@ -56,5 +58,7 @@ namespace siegel {
 		Vector2f &GetVerticalMargin();
 		virtual void Render() const = 0;
 		double virtual GetBorderThickness();
+		virtual Vector2f &GetHorizontalPadding();
+		virtual Vector2f &GetVerticalPadding();
 	};
 }

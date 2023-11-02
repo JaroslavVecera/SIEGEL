@@ -59,6 +59,8 @@ void GO::SetVerticalPosition(siegel::Position& position) {
 void GO::Initialize() {
 	SetVerticalSize(new FixedSize(50));
 	SetHorizontalSize(new FixedSize(50));
+	_horizontalPadding = Vector2f(0, 0);
+	_verticalPadding = Vector2f(0, 0);
 }
 
 void GO::Emplace(Vector2f& horizontalParentBounds, Vector2f& verticalParentBounds) {
@@ -91,4 +93,12 @@ forward_list<GO*> GO::GetChildren() {
 
 double GO::GetBorderThickness() {
 	return 0;
+}
+
+Vector2f &GO::GetHorizontalPadding() {
+	return _horizontalPadding;
+}
+
+Vector2f &GO::GetVerticalPadding() {
+	return _verticalPadding;
 }

@@ -16,6 +16,7 @@ namespace demo {
 		void ParseColor(json& data, Color** c);
 		void ParseSize(json& data, GO* object);
 		void ParseMargin(json& data, GO* object);
+		void ParsePadding(json& data, Layout* object);
 		Size* ParseLongSize(json& data);
 		void ParsePosition(json& data, GO* object);
 		double ParseBorderThickness(json& data);

@@ -10,8 +10,8 @@ namespace siegel {
 	protected:
 		forward_list<GO*> _children;
 		RectangleShape _border;
-		Vector2f _horizontalPadding;
-		Vector2f _verticalPadding;
+		double _borderThickness;
+		sf::Color _outlineColor;
 	protected:
 		void Initialize();
 		virtual void Emplace(Vector2f& horizontalParentBounds, Vector2f& verticalParentBounds);
@@ -27,8 +27,8 @@ namespace siegel {
 		virtual void Render() const;
 		void SetHorizontalPadding(Vector2f margin);
 		void SetVerticalPadding(Vector2f margin);
-		Vector2f GetHorizontalPadding();
-		Vector2f GetVerticalPadding();
+		virtual Vector2f &GetHorizontalPadding();
+		virtual Vector2f &GetVerticalPadding();
 		void SetBorderThickness(double thickness);
 		virtual double GetBorderThickness();
 	};

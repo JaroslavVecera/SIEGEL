@@ -28,11 +28,11 @@ void Layout::SetHorizontalSize(siegel::Size* size) {
 }
 
 void Layout::SetOutlineColor(Color& c) {
-	_border.setOutlineColor(c);
+	_outlineColor = c;
 }
 
 Color Layout::GetOutlineColor() const {
-	return _border.getOutlineColor();
+	return _outlineColor;
 }
 
 void Layout::Emplace(Vector2f& horizontalParentBounds, Vector2f& verticalParentBounds) {
@@ -40,15 +40,33 @@ void Layout::Emplace(Vector2f& horizontalParentBounds, Vector2f& verticalParentB
 	EmplaceBorder();
 	for (GO* child : _children)
 	{
-		Vector2f horizontalBounds = Vector2f(_canvasHorizontalBounds.x + _horizontalMargin.x + GetBorderThickness(), _canvasHorizontalBounds.y - _horizontalMargin.y - GetBorderThickness());
-		Vector2f verticalBounds = Vector2f(_canvasVerticalBounds.x + _verticalMargin.x + GetBorderThickness(), _canvasVerticalBounds.y - _verticalMargin.y - GetBorderThickness());
+		Vector2f horizontalBounds = Vector2f(_canvasHorizontalBounds.x + _horizontalMargin.x + GetBorderThickness() + GetHorizontalPadding().x, _canvasHorizontalBounds.y - _horizontalMargin.y - GetBorderThickness() - GetHorizontalPadding().y);
+		Vector2f verticalBounds = Vector2f(_canvasVerticalBounds.x + _verticalMargin.x + GetBorderThickness() + GetVerticalPadding().x, _canvasVerticalBounds.y - _verticalMargin.y - GetBorderThickness() - GetVerticalPadding().y);
 		child->Emplace(horizontalBounds, verticalBounds);
 	}
 }
 
 void Layout::EmplaceBorder() {
-	_border.setPosition(Vector2f(_canvasTopleft.x + _horizontalMargin.x + GetBorderThickness(), _canvasTopleft.y + _verticalMargin.x + GetBorderThickness()));
-	_border.setSize(Vector2f(_canvasSize.x - _horizontalMargin.x - _horizontalMargin.y - 2 * GetBorderThickness(), _canvasSize.y - _verticalMargin.x - _verticalMargin.y - 2 * GetBorderThickness()));
+	double positionX = _canvasTopleft.x + _horizontalMargin.x + GetBorderThickness();
+	double positionY = _canvasTopleft.y + _verticalMargin.x + GetBorderThickness();
+	double sizeH = _canvasSize.x - _horizontalMargin.x - _horizontalMargin.y - 2 * GetBorderThickness();
+	double sizeV = _canvasSize.y - _verticalMargin.x - _verticalMargin.y - 2 * GetBorderThickness();
+	if (sizeH <= 0 || sizeV <= 0)
+	{
+		_border.setOutlineThickness(0);
+		_border.setFillColor(GetOutlineColor());
+		_border.setOutlineColor(sf::Color::Transparent);
+		_border.setPosition(Vector2f(positionX - GetBorderThickness(), positionY - GetBorderThickness()));
+		_border.setSize(Vector2f(GetBorderThickness() * 2 + sizeH, GetBorderThickness() * 2 + sizeV));
+	}
+	else {
+		_border.setOutlineThickness(GetBorderThickness());
+		_border.setFillColor(sf::Color::Transparent);
+		_border.setOutlineColor(GetOutlineColor());
+		_border.setPosition(Vector2f(positionX, positionY));
+		_border.setSize(Vector2f(sizeH, sizeV));
+	}
+
 }
 
 void Layout::AddChild(GO* child) {
@@ -69,20 +87,20 @@ void Layout::SetVerticalPadding(Vector2f padding) {
 	_verticalPadding = padding;
 }
 
-Vector2f Layout::GetHorizontalPadding() {
+Vector2f &Layout::GetHorizontalPadding() {
 	return _horizontalPadding;
 }
 
-Vector2f Layout::GetVerticalPadding() {
+Vector2f &Layout::GetVerticalPadding() {
 	return _verticalPadding;
 }
 
 double Layout::GetBorderThickness() {
-	return _border.getOutlineThickness();
+	return _borderThickness;
 }
 
 void Layout::SetBorderThickness(double thickness) {
-	_border.setOutlineThickness(thickness);
+	_borderThickness = thickness;
 }
 
 forward_list<GO*> Layout::GetChildren() {
