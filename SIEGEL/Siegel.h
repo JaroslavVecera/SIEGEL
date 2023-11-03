@@ -13,5 +13,6 @@
 #include "FixedSize.h"
 #include "StretchableSize.h"
 #include "ShrinkableSize.h"
+#include "ProportionalSize.h"
 
 #include "Shapes.h"

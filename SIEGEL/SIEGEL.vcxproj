@@ -154,6 +154,7 @@
     <ClCompile Include="GO.cpp" />
     <ClCompile Include="Layout.cpp" />
     <ClCompile Include="Position.cpp" />
+    <ClCompile Include="ProportionalSize.cpp" />
     <ClCompile Include="ShrinkableSize.cpp" />
     <ClCompile Include="Shape.cpp" />
     <ClCompile Include="Size.cpp" />
@@ -173,6 +174,7 @@
     <ClInclude Include="GO.h" />
     <ClInclude Include="Layout.h" />
     <ClInclude Include="Position.h" />
+    <ClInclude Include="ProportionalSize.h" />
     <ClInclude Include="Shape.h" />
     <ClInclude Include="Shapes.h" />
     <ClInclude Include="Siegel.h" />

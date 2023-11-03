@@ -16,8 +16,12 @@ Vector2f siegel::StretchableSize::GetBounds(Vector2f &parentBounds, GO &object) 
 
 	double factor1 = leftSize == 0 ? DBL_MAX :(absolutParentOrigin + position.GetShift() - parentBounds.x) / leftSize;
 	double factor2 = rightSize == 0 ? DBL_MAX : (parentBounds.y - (absolutParentOrigin + position.GetShift())) / rightSize;
-	double factor = fmax(1, fmin(factor1, factor2));
+	double factor = GetFactor(factor1, factor2);
 	double x1 = absolutParentOrigin + position.GetShift() - factor * leftSize;
 	double x2 = absolutParentOrigin + position.GetShift() + factor * rightSize;
 	return Vector2f(x1, x2);
+}
+
+double siegel::StretchableSize::GetFactor(double factor1, double factor2) {
+	return fmax(1, fmin(factor1, factor2));
 }

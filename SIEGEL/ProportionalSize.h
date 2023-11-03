@@ -1,16 +1,16 @@
 #pragma once
 
 #include "Size.h"
+#include "StretchableSize.h"
 #include "Position.h"
 
 namespace siegel {
 	class Size;
-	class StretchableSize : public Size {
+	class ProportionalSize : public StretchableSize {
 	protected:
+		double _proportion;
 		virtual double GetFactor(double factor1, double factor2);
 	public:
-		StretchableSize(double size);
-
-		virtual Vector2f GetBounds(Vector2f &parentBounds, GO &objct);
+		ProportionalSize(double size, double proportion);
 	};
 }

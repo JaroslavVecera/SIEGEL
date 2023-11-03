@@ -133,7 +133,15 @@ void GraphicBuilder::ParsePadding(json& data, Layout* object) {
 }
 
 Size* GraphicBuilder::ParseLongSize(json& data) {
-	if (data.size() != 2 || !data[0].is_string() || !data[1].is_number())
+	if (!data[0].is_string() || !data[1].is_number())
+		return nullptr;
+	if (data.size() == 3) {
+		if (data[0] == "proportional")
+			return new ProportionalSize(data[1], data[2]);
+		else
+			return nullptr;
+	}
+	if (data.size() != 2)
 		return nullptr;
 	if (data[0] == "fixed")
 		return new FixedSize(data[1]);

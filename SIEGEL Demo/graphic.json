@@ -15,24 +15,24 @@
 			"borderThickness": 15,
 			"outlineColor": [ 6000, 0, 0 ],
 			"size": [
-				[ "fixed", 10 ],
+				[ "fixed", 100 ],
 				[ "fixed", 150 ]
 			],
 			"position": [
 				[ 0, 0.5, 0.5 ],
 				[ 0, 0.5, 0.5 ]
 			],
-			"padding": [ 15, 30 ],
+			"padding": [ 15, 0 ],
 					"children": [
 						{
 							"type": "Ellipse",
 							"size": [
 								[ "fixed", 50 ],
-								[ "fixed", 20 ]
+								[ "proportional", 20, 0.33 ]
 							],
 							"position": [
 								[ 0, 0.5, 0.5 ],
-								[ 0, 0.5, 0.5 ]
+								[ 0, 1, 1 ]
 							],
 							"margin": [ 0, 0 ]
 				}
