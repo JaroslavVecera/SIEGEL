@@ -1,4 +1,5 @@
 #include "EllipseShape.h"
+#include <cmath>
 
 using namespace siegel;
 
@@ -26,7 +27,10 @@ using namespace siegel;
 
     std::size_t EllipseShape::getPointCount() const
     {
-        return 30;
+        double r = (m_radius.x + m_radius.y) / 2;
+        double z = (1 - 0.25 / r);
+        double th = std::acos(2 * z * z - 1);
+        return std::ceil(2 * std::acos(-1) / th);
     }
 
     sf::Vector2f EllipseShape::getPoint(std::size_t index) const

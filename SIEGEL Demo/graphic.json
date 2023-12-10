@@ -11,45 +11,61 @@
 	],
 	"children": [
 		{
+			"cornerRadius": 5,
 			"type": "Layout",
-			"borderThickness": 15,
+			"borderThickness": 10,
 			"outlineColor": [ 6000, 0, 0 ],
+			"color": [ 60, 0, 0 ],
 			"size": [
-				[ "fixed", 100 ],
+				[ "fixed", 250 ],
 				[ "fixed", 150 ]
 			],
 			"position": [
 				[ 0, 0.5, 0.5 ],
 				[ 0, 0.5, 0.5 ]
 			],
-			"padding": [ 15, 0 ],
-					"children": [
-						{
-							"type": "Ellipse",
-							"size": [
-								[ "fixed", 50 ],
-								[ "proportional", 20, 0.33 ]
-							],
-							"position": [
-								[ 0, 0.5, 0.5 ],
-								[ 0, 1, 1 ]
-							],
-							"margin": [ 0, 0 ]
+			"padding": [ 0, 0 ],
+			"children": [
+				{
+					"type": "Ellipse",
+					"size": [
+						[ "stretch", 10 ],
+						[ "proportional", 20, 0.5 ]
+					],
+					"position": [
+						[ 0, 0.5, 0.5 ],
+						[ 0, 1, 1 ]
+					],
+					"color": [ 6000, 100, 0 ],
+					"margin": [ 0, 0 ]
 				}
 			]
 		},
 		{
-			"type": "Layout",
-			"outlineColor": [ 6000, 0, 0 ],
+			"type": "Ellipse",
 			"size": [
-				[ "fixed", 30 ],
-				[ "fixed", 5 ]
+				[ "fixed", 80 ],
+				[ "fixed", 80 ]
 			],
 			"position": [
-				[ 3, 0, 0 ],
-				[ 3, 0, 0 ]
+				[ 0, 0, 0 ],
+				[ 15, 0, 0 ]
+			]
+		},
+		{
+			"borderThickness": 20,
+			"cornerRadius": 70,
+			"outlineColor": [ 600, 0, 100 ],
+			"color": [ 6000, 100, 0 ],
+			"type": "Layout",
+			"size": [
+				[ "fixed", 180 ],
+				[ "fixed", 180 ]
 			],
-			"borderThickness": 20
+			"position": [
+				[ 15, 0, 0 ],
+				[ 125, 0, 0 ]
+			]
 		}
 	]
 } 

@@ -14,6 +14,7 @@ GO* GraphicBuilder::BuildGoObject(json &data, string type) {
 
 	typeFunctions["Layout"] = &GraphicBuilder::BuildLayout;
 	typeFunctions["Ellipse"] = &GraphicBuilder::BuildEllipse;
+	typeFunctions["Rectangle"] = &GraphicBuilder::BuildRectangle;
 	GO* (GraphicBuilder::*function)(json&) = typeFunctions.find(type)->second;
 	if (function == nullptr)
 		return nullptr;
@@ -38,6 +39,39 @@ GO* GraphicBuilder::BuildEllipse(json& data) {
 	return e;
 }
 
+GO* GraphicBuilder::BuildRectangle(json& data) {
+
+	siegel::Rectangle* e = new siegel::Rectangle();
+
+	if (data.contains("color")) {
+		Color* c = nullptr;
+		ParseColor(data["color"], &c);
+		if (c != nullptr)
+			e->SetColor(*c);
+		delete c;
+	}
+
+	if (data.contains("outlineColor")) {
+		Color* c = nullptr;
+		ParseColor(data["outlineColor"], &c);
+		if (c != nullptr)
+			e->SetBorderColor(*c);
+		delete c;
+	}
+
+	if (data.contains("borderThickness")) {
+		double t = ParseBorderThickness(data["borderThickness"]);
+		e->SetBorderThickness(t);
+	}
+
+	if (data.contains("cornerRadius")) {
+		double t = ParseBorderThickness(data["cornerRadius"]);
+		e->SetRadius(t);
+	}
+
+	return e;
+}
+
 void GraphicBuilder::ParseColor(json& data, Color** c) {
 	if (!data.is_array() || data.size() != 3)
 		return;
@@ -56,6 +90,11 @@ GO* GraphicBuilder::BuildLayout(json &data) {
 		if (c != nullptr)
 			l->SetOutlineColor(*c);
 		delete c;
+	}
+
+	if (data.contains("cornerRadius")) {
+		double t = ParseBorderThickness(data["cornerRadius"]);
+		l->SetCornerRadius(t);
 	}
 
 	if (data.contains("borderThickness")) {

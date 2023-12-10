@@ -35,6 +35,8 @@ siegel::Size& GO::GetHorizontalSize() const {
 }
 
 void GO::SetVerticalSize(siegel::Size* size) {
+	if (_verticalSize == size)
+		return;
 	if (_verticalSize)
 		delete _verticalSize;
 	_verticalSize = size;
@@ -42,6 +44,8 @@ void GO::SetVerticalSize(siegel::Size* size) {
 }
 
 void GO::SetHorizontalSize(siegel::Size* size) {
+	if (_horizontalSize == size)
+		return;
 	if (_horizontalSize)
 		delete _horizontalSize;
 	_horizontalSize = size;
@@ -60,7 +64,7 @@ void GO::Initialize() {
 	SetVerticalSize(new FixedSize(50));
 	SetHorizontalSize(new FixedSize(50));
 	_horizontalPadding = Vector2f(0, 0);
-	_verticalPadding = Vector2f(0, 0);
+	_verticalPadding = Vector2f(0, 0); 
 }
 
 void GO::Emplace(Vector2f& horizontalParentBounds, Vector2f& verticalParentBounds) {

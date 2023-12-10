@@ -12,6 +12,7 @@ namespace demo {
 	private:
 		GO* BuildGoObject(json &data, string type);
 		GO* BuildEllipse(json &data);
+		GO* BuildRectangle(json& data);
 		GO* BuildLayout(json &data);
 		void ParseColor(json& data, Color** c);
 		void ParseSize(json& data, GO* object);
